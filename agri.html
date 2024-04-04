@@ -1,0 +1,187 @@
+=<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farm Wheelz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('agri1.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-section {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px; /* Adjust the width as needed */
+    }
+
+    .registration-form {
+      display: none;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"], input[type="password"], select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #2ecc71;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #2ecc71;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Farm Wheelz</h1>
+  </header>
+  <div class="container">
+    <div class="form-section" id="loginSection">
+      <h2>Login</h2>
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="Enter your username">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password">
+      <button onclick="login()">Login</button>
+      <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+    </div>
+    <div class="form-section" id="locationSection" style="display:none;">
+      <h2>Enter Your Location</h2>
+      <label for="location">Your Location:</label>
+      <input type="text" id="location" placeholder="Enter your location">
+      <button onclick="enterLocation()">Enter Your Location</button>
+    </div>
+    <div class="form-section" id="registerVehicleSection" style="display:none;">
+      <h2>Register Your Vehicle</h2>
+      <button onclick="showRegistrationForm()">Register Your Vehicle</button>
+    </div>
+    <div class="registration-form" id="registrationForm" style="display:none;">
+      <div class="form-section">
+        <h2>Vehicle Registration</h2>
+        <label for="vehicleName">Vehicle Name:</label>
+        <input type="text" id="vehicleName" placeholder="Enter vehicle name">
+        <label for="vehicleType">Vehicle Type:</label>
+        <input type="text" id="vehicleType" placeholder="Enter vehicle type">
+        <label for="vehicleModel">Vehicle Model:</label>
+        <input type="text" id="vehicleModel" placeholder="Enter vehicle model">
+        <label for="vehicleYear">Vehicle Year:</label>
+        <input type="text" id="vehicleYear" placeholder="Enter vehicle year">
+        <label for="vehicleColor">Vehicle Color:</label>
+        <input type="text" id="vehicleColor" placeholder="Enter vehicle color">
+        <label for="vehicleNumber">Vehicle Number:</label>
+        <input type="text" id="vehicleNumber" placeholder="Enter vehicle number">
+        <button onclick="registerVehicle()">Submit</button>
+        <button onclick="hideRegistrationForm()">Close</button>
+      </div>
+    </div>
+    <div class="form-section" id="rentVehicleSection" style="display:none;">
+      <h2>Rent a Vehicle</h2>
+      <!-- Add vehicle rental form here -->
+      <button onclick="rentVehicle()">Rent a Vehicle</button>
+    </div>
+    <div class="form-section" id="registerSection" style="display:none;">
+      <h2>Register</h2>
+      <label for="newUsername">Username:</label>
+      <input type="text" id="newUsername" placeholder="Enter a new username">
+      <label for="newPassword">Password:</label>
+      <input type="password" id="newPassword" placeholder="Enter a new password">
+      <button onclick="register()">Register</button>
+      <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2024 Farm Wheelz</p>
+  </footer>
+
+  <script>
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Perform validation (e.g., check if username and password are not empty)
+      if (username && password) {
+        // Implement logic to authenticate user (e.g., check credentials against a database)
+        // For demonstration purposes, let's assume the login is successful
+        alert("Login successful. Redirecting to enter your location...");
+        // Show location section after successful login
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("registerSection").style.display = "none";
+        document.getElementById("locationSection").style.display = "block";
+      } else {
+        alert("Please enter both username and password.");
+      }
+    }
+
+    function enterLocation() {
+      // Implement logic to handle entering the location
+      alert("Enter your location...");
+      // Show register vehicle and rent vehicle sections after entering location
+      document.getElementById("locationSection").style.display = "none";
+      document.getElementById("registerVehicleSection").style.display = "block";
+      document.getElementById("rentVehicleSection").style.display = "block";
+    }
+
+    function showRegister() {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("registerSection").style.display = "block";
+    }
+
+    function showRegistrationForm() {
+      document.getElementById("registerVehicleSection").style.display = "none";
+      document.getElementById("registrationForm").style.display = "block";
+    }
+
+    function hideRegistrationForm() {
+      document.getElementById("registrationForm").style.display = "none";
+      document.getElementById("registerVehicleSection").style.display = "block";
+    }
+
+    function registerVehicle() {
+      // Implement logic for registering a vehicle
+      alert("Registering your vehicle...");
+    }
+
+    function rentVehicle() {
+      // Implement logic for renting a vehicle
+      alert("Renting a vehicle...");
+    }
+  </script>
+</body>
+</html>
